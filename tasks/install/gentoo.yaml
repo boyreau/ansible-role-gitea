@@ -1,0 +1,4 @@
+- name: Install gitea from emerge
+  community.general.portage:
+    package: gitea
+    state: present

@@ -1,0 +1,31 @@
+- name: Configure action runner token
+  tags:
+    - conf
+    - actions
+  block:
+    - name: Retrieve action runner token
+      ansible.builtin.import_tasks:
+        file: conf/retrieve_act_runner_token.yaml
+
+  rescue:
+    - name: (re)start gitea
+      ansible.builtin.include_tasks:
+        file: "{{ item }}"
+      with_first_found:
+        - "restart/{{ ansible_facts['init_process_name'] }}.yaml"
+        - "restart/default.yaml"
+
+    - name: Wait for gitea server to be online
+      ansible.builtin.uri:
+        url: http://localhost:3000/
+      retries: 10
+      delay: 10
+
+    - name: Generate action runner token
+      ansible.builtin.shell:
+        creates: /etc/gitea/action_token
+        cmd: "su -s /bin/sh git -c '/usr/bin/gitea --config /etc/gitea/app.ini actions generate-runner-token' > /etc/gitea/action_token"
+
+    - name: Retrieve action runner token
+      ansible.builtin.import_tasks:
+        file: conf/retrieve_act_runner_token.yaml

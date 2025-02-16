@@ -1,0 +1,8 @@
+gitea_db_hostname: # set me
+
+# sqlite, postgresql, mysql, mariadb
+gitea_db_software: sqlite
+
+gitea_db_name: gitea
+gitea_db_user: gitea
+gitea_db_password: # set me

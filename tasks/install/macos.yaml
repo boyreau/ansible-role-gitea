@@ -1,0 +1,4 @@
+- name: Install gitea from Homebrew
+  community.general.homebrew:
+    name: gitea
+    state: present

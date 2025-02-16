@@ -1,0 +1,5 @@
+- name: Install gitea from pkg
+  ansible.builtin.package:
+    name: gitea
+    state: present
+    use: pkg

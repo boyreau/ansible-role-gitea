@@ -1,0 +1,14 @@
+- name: Install gitea
+  ansible.builtin.include_tasks:
+    file: "install/{{ gitea_source }}.yaml"
+
+- name: Configure gitea
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+  first_match_of:
+    - "conf/{{ gitea_source }}.yaml"
+    - "conf/default.yaml"
+
+- name: Expose gitea action runner token
+  ansible.builtin.include_tasks:
+    file: conf/act_runner_token.yaml

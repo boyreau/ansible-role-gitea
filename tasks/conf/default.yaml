@@ -1,0 +1,21 @@
+- name: Configure gitea
+  tags: conf
+  notify: Restart gitea
+  block:
+    - name: Install gitea configuration
+      ansible.builtin.template:
+        force: false
+        src: app.ini.j2
+        dest: /etc/gitea/app.ini
+        owner: git
+        group: git
+        mode: '0600'
+
+    - name: Set up gitea service
+      ansible.builtin.copy:
+        src: gitea.service
+        dest: /etc/systemd/system/gitea.service
+        owner: root
+        group: root
+        mode: '0600'
+      when: ansible_facts.init_process_name == "systemd"

@@ -1,0 +1,6 @@
+- name: Install gitea from pacman
+  community.general.pacman:
+    name: gitea
+    reason: "explicit"
+    state: latest # Arch users
+    upgrade: true # being Arch users

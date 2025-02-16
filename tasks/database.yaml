@@ -1,0 +1,2 @@
+- ansible.builtin.include_tasks:
+  file: "database_{{ gitea_db_software }}.yaml"

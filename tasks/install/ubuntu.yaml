@@ -1,0 +1,4 @@
+- name: Install gitea from snap
+  community.general.snap:
+    name: gitea
+    state: present
