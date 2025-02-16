@@ -5,7 +5,7 @@
 - name: Configure gitea
   ansible.builtin.include_tasks:
     file: "{{ item }}"
-  first_match_of:
+  with_first_found:
     - "conf/{{ gitea_source }}.yaml"
     - "conf/default.yaml"
 
