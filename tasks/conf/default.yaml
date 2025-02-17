@@ -4,7 +4,6 @@
   block:
     - name: Install gitea configuration
       ansible.builtin.template:
-        force: false
         src: app.ini.j2
         dest: /etc/gitea/app.ini
         owner: git

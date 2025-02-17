@@ -5,7 +5,6 @@ WORK_PATH = /var/lib/gitea
 
 [repository]
 ROOT = /var/lib/gitea/git/repositories
-ENABLE_PUSH_CREATE_USER = true
 
 [repository.local]
 LOCAL_COPY_PATH = /tmp/gitea/local-repo
@@ -16,8 +15,8 @@ TEMP_PATH = /tmp/gitea/uploads
 [server]
 APP_DATA_PATH = /var/lib/gitea
 SSH_DOMAIN = {{ gitea_hostname }}
-HTTP_PORT = 3000
-ROOT_URL = http://{{ gitea_hostname }}:3000/
+HTTP_PORT = {{ gitea_http_port }}
+ROOT_URL = http://{{ gitea_hostname }}:{{ gitea_http_port }}/
 DISABLE_SSH = false
 ; In rootless gitea container only internal ssh server is supported
 START_SSH_SERVER = true
@@ -31,12 +30,12 @@ OFFLINE_MODE = true
 
 [database]
 PATH = /var/lib/gitea/data/gitea.db
-DB_TYPE = sqlite3
-HOST = {{ gitea_hostname }}:3306
-NAME = gitea
-USER = root
-PASSWD = 
-SCHEMA = 
+DB_TYPE = {{ gitea_db_software }}
+HOST = {{ gitea_db_host }}:{{ gitea_db_port }}
+NAME = {{ gitea_db_name }}
+USER = {{ gitea_db_user }}
+PASSWD = {{ gitea_db_password }}
+SCHEMA = {{ gitea_db_schema }}
 SSL_MODE = disable
 LOG_SQL = false
 
@@ -97,3 +96,8 @@ DEFAULT_TRUST_MODEL = committer
 
 [oauth2]
 JWT_SECRET = {{ gitea_jwt_secret }}
+
+[extra]
+{% for param in gitea_extra_params %}
+{{ param.key }} = {{ param.value }}
+{% endfor %}

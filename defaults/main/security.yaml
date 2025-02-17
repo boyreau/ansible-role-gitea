@@ -1,0 +1,4 @@
+# Various gitea secrets.
+gitea_internal_token: changeme
+gitea_jwt_secret: changeme
+gitea_lfs_jwt_secret: changeme

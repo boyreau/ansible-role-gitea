@@ -1,0 +1,7 @@
+# Installation source. Can be binaries or a linux distribution.
+gitea_source: binaries
+
+# Parameters below are only used
+# when installing from binaries
+gitea_version: 1.23.1
+gitea_arch: linux-amd64

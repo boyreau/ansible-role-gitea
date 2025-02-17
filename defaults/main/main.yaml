@@ -1,14 +1,5 @@
-# Installation source. Can be binaries or a linux distribution.
-gitea_source: binaries
-
-# Only used when installing from binaries
-gitea_version: 1.23.1
-gitea_arch: linux-amd64
-
-# Hostname used to access your gitea instance
-gitea_hostname: localhost
-
-# Various gitea secrets. Used for the app.ini.j2 template substitution
-gitea_internal_token: changeme
-gitea_jwt_secret: changeme
-gitea_lfs_jwt_secret: changeme
+# Extra params added at the end of the configuration.
+# Refer to gitea official documentation and add specific items here.
+gitea_extra_params:
+  - key: ENABLE_PUSH_CREATE_USER
+    value: true

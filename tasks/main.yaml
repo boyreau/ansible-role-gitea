@@ -2,12 +2,19 @@
   ansible.builtin.include_tasks:
     file: "install/{{ gitea_source }}.yaml"
 
-- name: Configure gitea
+- name: Gitea configuration files
   ansible.builtin.include_tasks:
     file: "{{ item }}"
   with_first_found:
     - "conf/{{ gitea_source }}.yaml"
     - "conf/default.yaml"
+
+- name: Gitea database initialization
+  ansible.builtin.include_tasks:
+    file: "{{ item }}"
+  with_first_found:
+    - "database/{{ gitea_db_software }}.yaml"
+    - "database/default.yaml"
 
 - name: Expose gitea action runner token
   ansible.builtin.include_tasks:

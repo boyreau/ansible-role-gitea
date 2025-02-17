@@ -1,0 +1,6 @@
+# URL used to access your gitea instance
+gitea_root_url: http://localhost:3000
+# Hostname of the machine running gitea
+gitea_hostname: localhost
+# HTTP Port exposed
+gitea_http_port: 3000
