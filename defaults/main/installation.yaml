@@ -1,3 +1,4 @@
+---
 # Installation source. Can be binaries or a linux distribution.
 gitea_source: binaries
 

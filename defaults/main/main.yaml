@@ -1,3 +1,4 @@
+---
 # Extra params added at the end of the configuration.
 # Refer to gitea official documentation and add specific items here.
 gitea_extra_params:

@@ -1,2 +1,3 @@
+---
 - name: Do nothing for sqlite3
   ansible.builtin.meta: noop

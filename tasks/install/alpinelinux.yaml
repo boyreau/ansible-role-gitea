@@ -1,3 +1,4 @@
+---
 - name: Install gitea from pkg
   ansible.builtin.package:
     name: gitea

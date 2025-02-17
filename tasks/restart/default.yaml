@@ -1,3 +1,4 @@
+---
 - name: Stop gitea
   ansible.builtin.shell:
     cmd: "kill $(cat /run/gitea.pid) && rm -f /run/gitea.pid"

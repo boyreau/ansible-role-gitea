@@ -1,3 +1,4 @@
+---
 - name: Install git and gitea
   tags: install
   block:
@@ -18,7 +19,7 @@
       ansible.builtin.get_url:
         dest: /usr/bin/gitea
         owner: root
-        mode: '0755'
+        mode: "0755"
         url: "https://dl.gitea.com/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-{{ gitea_arch }}"
 
     - name: Deploy gitea directories
@@ -30,8 +31,8 @@
         state: directory
         recurse: false
       loop:
-        - { path: /var/lib/gitea, mode: '0750', owner: git, group: git }
-        - { path: /var/lib/gitea/custom, mode: '0750', owner: git, group: git }
-        - { path: /var/lib/gitea/data, mode: '0750', owner: git, group: git }
-        - { path: /var/lib/gitea/log, mode: '0750', owner: git, group: git }
-        - { path: /etc/gitea, mode: '0770', owner: root, group: git }
+        - { path: /var/lib/gitea, mode: "0750", owner: git, group: git }
+        - { path: /var/lib/gitea/custom, mode: "0750", owner: git, group: git }
+        - { path: /var/lib/gitea/data, mode: "0750", owner: git, group: git }
+        - { path: /var/lib/gitea/log, mode: "0750", owner: git, group: git }
+        - { path: /etc/gitea, mode: "0770", owner: root, group: git }

@@ -1,4 +1,5 @@
+---
 - name: Migrate database
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: su git -s /bin/sh -c 'gitea --config /etc/gitea/app.ini migrate'
   changed_when: false

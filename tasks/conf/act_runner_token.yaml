@@ -1,3 +1,4 @@
+---
 - name: Configure action runner token
   tags:
     - conf

@@ -1,3 +1,4 @@
+---
 # URL used to access your gitea instance
 gitea_root_url: http://localhost:3000
 # Hostname of the machine running gitea
